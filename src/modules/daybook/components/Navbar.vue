@@ -1,10 +1,26 @@
 <template>
   <nav class="navbar bg-dark">
-    <div class="container d-flex flex-column flex-md-row">
+    <div class="container d-flex flex-md-row">
+      <div class="d-flex d-md-none">
+        <button
+          class="btn btn-outline-primary my-3 my-md-0"
+          href="#"
+          @click="changeStateSidebar"
+        >
+          <!-- Condition icon menu -->
+          <i v-if="!activeSidebar" class="fas fa-calendar"></i>
+          <i v-else class="far fa-calendar-times"></i>
+        </button>
+      </div>
+
       <!-- Container left -->
-      <div class="d-flex gap-3 align-items-center">
-        <img src="@/assets/logo.png" alt="vue-logo" height="50" />
-        <a class="navbar-brand link-primary" href="#">Home</a>
+      <div class="d-flex align-items-center">
+        <!-- Button menu -->
+
+        <a class="navbar-brand link-primary" href="#">
+          <img src="@/assets/logo.png" alt="vue-logo" height="40" />
+          Home
+        </a>
       </div>
 
       <!-- Container right -->
@@ -16,3 +32,19 @@
     </div>
   </nav>
 </template>
+
+<script>
+import { mapState } from 'vuex';
+
+export default {
+  computed: {
+    ...mapState('daybook', ['activeSidebar']),
+  },
+
+  methods: {
+    changeStateSidebar() {
+      this.$store.commit('daybook/changeStateSidebar');
+    },
+  },
+};
+</script>
