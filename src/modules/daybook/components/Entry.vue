@@ -44,7 +44,8 @@ export default {
   text-align: justify;
 
   p {
-    font-size: 15px;
+    /* font-size: 15px; */
+    font-size: 25px;
   }
 }
 </style>
