@@ -31,4 +31,12 @@ export default {
 .col {
   height: calc(100vh - 100px);
 }
+
+.col-4 {
+  width: 33.33333333%;
+
+  @media screen and (max-width: 576px) {
+    width: 0%;
+  }
+}
 </style>

@@ -5,3 +5,7 @@ export const increment = (state) => {
 export const changeStateSidebar = (state) => {
   state.activeSidebar = !state.activeSidebar;
 };
+
+// export const testFab = (state) => {
+//   state.count
+// }

@@ -33,13 +33,16 @@ export default {
   /* position: absolute; */
   bottom: 0;
   height: calc(100vh - 100px);
-  left: -170%;
+  left: -180%;
   overflow-x: hidden;
   overflow-y: auto;
   padding-top: 1rem;
   top: 69px;
   transition: 700ms;
   z-index: 10;
+  /* Para que no se trasnparente los demas componentes debajo de este */
+  background-color: white;
+
   @media screen and (max-width: 576px) {
     /* display: none; */
     top: 94px;

@@ -1,11 +1,17 @@
 <template>
-  <button class="btn btn-dark">
+  <button class="btn btn-dark" @click="increment">
     <i class="fa fa-2x fa-plus"></i>
   </button>
 </template>
 
 <script>
-export default {};
+export default {
+  methods: {
+    increment() {
+      this.$store.commit('daybook/increment');
+    },
+  },
+};
 </script>
 
 <style lang="scss" scoped>

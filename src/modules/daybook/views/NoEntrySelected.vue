@@ -1,5 +1,5 @@
 <template>
-  <div class="d-none h-100 w-100 justify-content-center d-sm-flex">
+  <div class="d-flex h-100 w-100 justify-content-center">
     <p class="align-self-center fs-1 text-primary">
       Nothing selected
     </p>

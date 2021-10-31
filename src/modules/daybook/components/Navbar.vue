@@ -16,7 +16,6 @@
       <!-- Container left -->
       <div class="d-flex align-items-center">
         <!-- Button menu -->
-
         <a class="navbar-brand link-primary" href="#">
           <img src="@/assets/logo.png" alt="vue-logo" height="40" />
           Home

@@ -11,6 +11,8 @@
 export default {
   methods: {
     goToDay() {
+      // (no carga la ruta hija, entonces lo hacemos directamente)
+      // this.$router.push({ name: 'daybook' });
       this.$router.push({ name: 'no-entry' });
     },
   },
