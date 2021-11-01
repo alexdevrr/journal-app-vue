@@ -15,7 +15,7 @@ export default {
 
   methods: {
     increment() {
-      this.$store.commit('daybook/increment');
+      this.$store.commit('journal/increment');
     },
   },
 };

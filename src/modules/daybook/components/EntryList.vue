@@ -22,7 +22,7 @@ export default {
 
   // Sidebar cambia de styles dependiendo el estado del mismo
   computed: {
-    ...mapState('daybook', ['activeSidebar']),
+    ...mapState('journal', ['activeSidebar']),
   },
 };
 </script>

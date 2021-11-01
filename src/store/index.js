@@ -1,9 +1,11 @@
 import { createStore } from 'vuex';
-import { dayBookStore } from './daybook';
+import journal from '../modules/daybook/store/journal';
 
 // store
-export default createStore({
+const store = createStore({
   modules: {
-    daybook: dayBookStore,
+    journal,
   },
 });
+
+export default store;

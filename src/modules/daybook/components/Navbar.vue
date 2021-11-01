@@ -37,12 +37,12 @@ import { mapState } from 'vuex';
 
 export default {
   computed: {
-    ...mapState('daybook', ['activeSidebar']),
+    ...mapState('journal', ['activeSidebar']),
   },
 
   methods: {
     changeStateSidebar() {
-      this.$store.commit('daybook/changeStateSidebar');
+      this.$store.commit('journal/changeStateSidebar');
     },
   },
 };
