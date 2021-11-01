@@ -1,11 +1,18 @@
 <template>
   <button class="btn btn-dark" @click="increment">
-    <i class="fa fa-2x fa-plus"></i>
+    <i class="fa fa-2x" :class="icon"></i>
   </button>
 </template>
 
 <script>
 export default {
+  props: {
+    icon: {
+      type: String,
+      default: 'fa-plus',
+    },
+  },
+
   methods: {
     increment() {
       this.$store.commit('daybook/increment');
@@ -24,7 +31,8 @@ button {
   right: 30px;
   transition-duration: 300ms;
   transition-property: color;
-  width: 60px;
+  min-width: 60px;
+  min-height: 60px;
 
   &:hover {
     color: #42b983;

@@ -1,5 +1,8 @@
 <template>
-  <div class="entry-container mb-3 pointer p-2" @click="example">
+  <div
+    class="entry-container mb-3 pointer p-2"
+    @click="$router.push({ name: 'entry', params: { id: 153 } })"
+  >
     <div class="entry-title d-flex gap-2">
       <span class="text-primary fw-bold">15</span>
       <span class="fw-bold">Julio, 2021</span>
@@ -16,13 +19,7 @@
 </template>
 
 <script>
-export default {
-  methods: {
-    example() {
-      this.$router.push({ name: 'entry', params: { id: 153 } });
-    },
-  },
-};
+export default {};
 </script>
 
 <style lang="scss" scoped>
