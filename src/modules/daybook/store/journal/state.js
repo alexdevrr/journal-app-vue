@@ -1,6 +1,29 @@
 export default () => ({
-  count: 1,
   activeSidebar: true,
   isLoading: true,
-  entries: [1, 2, 3, 4, 5],
+  entries: [
+    {
+      id: new Date().getTime(),
+      date: new Date().toDateString(),
+      text:
+        'Non anim pariatur minim exercitation nisi id sit nisi irure duis culpa nostrud aliquip irure. Velit duis laboris occaecat nisi tempor nisi magna culpa.',
+      picture: null,
+    },
+
+    {
+      id: new Date().getTime() + 1000,
+      date: new Date().toDateString(),
+      text:
+        'Dolore cupidatat anim enim culpa sunt cupidatat enim consequat sint eiusmod. Dolor quis elit nisi proident eiusmod ipsum nulla cillum.',
+      picture: null,
+    },
+
+    {
+      id: new Date().getTime() + 200,
+      date: new Date().toDateString(),
+      text:
+        'Velit tempor consequat qui nulla est ipsum amet proident ex in. Nisi sunt ut adipisicing dolore esse labore. Anim cupidatat excepteur.',
+      picture: null,
+    },
+  ],
 });

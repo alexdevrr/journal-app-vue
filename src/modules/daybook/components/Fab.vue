@@ -1,5 +1,5 @@
 <template>
-  <button class="btn btn-dark" @click="increment">
+  <button class="btn btn-dark">
     <i class="fa fa-2x" :class="icon"></i>
   </button>
 </template>
@@ -10,12 +10,6 @@ export default {
     icon: {
       type: String,
       default: 'fa-plus',
-    },
-  },
-
-  methods: {
-    increment() {
-      this.$store.commit('journal/increment');
     },
   },
 };
