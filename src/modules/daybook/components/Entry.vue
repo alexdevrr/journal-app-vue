@@ -59,7 +59,6 @@ export default {
 
     day() {
       const date = new Date(this.entry.date);
-      console.log(this.entry.date);
       return date.getDate();
     },
     mouth() {

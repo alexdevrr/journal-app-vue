@@ -3,9 +3,9 @@
     <div class="d-flex justify-content-between my-4">
       <!-- date -->
       <div class="d-flex gap-2">
-        <span class="text-primary fw-bold">15</span>
-        <span class="fw-bold">Julio, 2021</span>
-        <span class="fw-light">Martes</span>
+        <span class="text-primary fw-bold">{{ day }}</span>
+        <span class="fw-bold">{{ month }}</span>
+        <span class="fw-light">{{ yearDay }}</span>
       </div>
 
       <!-- buttons -->
@@ -27,7 +27,11 @@
   <!-- TextArea -->
   <div class="d-flex flex-column h-75 mx-2">
     <hr />
-    <textarea placeholder="What happended today?" class="w-100"></textarea>
+    <textarea
+      placeholder="What happended today?"
+      class="w-100"
+      v-model="entry.text"
+    ></textarea>
   </div>
 
   <!-- Image -->
@@ -42,12 +46,65 @@
 
 <script>
 import { defineAsyncComponent } from 'vue';
+import { mapGetters } from 'vuex';
+
+import getDayMonthYear from '../helpers/getDayMonthYear';
 
 export default {
+  props: {
+    id: {
+      type: String,
+      required: true,
+    },
+  },
+
   components: {
     Fab: defineAsyncComponent(() =>
       import('@/modules/daybook/components/Fab.vue')
     ),
+  },
+
+  data() {
+    return {
+      entry: null,
+    };
+  },
+
+  computed: {
+    ...mapGetters('journal', ['getEntryById']),
+    day() {
+      const { day } = getDayMonthYear(this.entry.date);
+      return day;
+    },
+    month() {
+      const { month } = getDayMonthYear(this.entry.date);
+      return month;
+    },
+    yearDay() {
+      const { yearDay } = getDayMonthYear(this.entry.date);
+      return yearDay;
+    },
+  },
+
+  methods: {
+    loadEntry() {
+      const entry = this.getEntryById(this.id);
+      // Si el id de la entrada no existe
+      if (!entry) this.$router.push({ name: 'no-entry' });
+
+      this.entry = entry;
+      console.log(entry);
+    },
+  },
+
+  created() {
+    this.loadEntry();
+  },
+
+  watch: {
+    id() {
+      this.loadEntry();
+    },
   },
 };
 </script>

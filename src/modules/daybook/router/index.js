@@ -23,8 +23,9 @@ export default {
           /* webpackChunkName: "daybook-entry" */ '@/modules/daybook/views/EntryView.vue'
         ),
       props: (route) => {
-        const id = Number(route.params.id);
-        return isNaN(id) ? { id: 1 } : { id };
+        return {
+          id: route.params.id,
+        };
       },
     },
   ],
