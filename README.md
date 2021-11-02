@@ -1,4 +1,4 @@
-# jorunal
+# journal
 
 ## Project setup
 

@@ -2,18 +2,24 @@
   <!-- <div :class="changeClassSidebar()"> -->
   <div :class="activeSidebar ? 'sidebar active' : 'sidebar'">
     <div class="px-2">
-      <input type="text" class="form-control" placeholder="Search entry" />
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Search entry"
+        v-model="term"
+      />
     </div>
 
     <div class="entry-scrollarea px-2 pt-2">
-      <Entry v-for="item in 100" :key="item"> </Entry>
+      <Entry v-for="entry in entriesByTerm" :key="entry.id" :entry="entry">
+      </Entry>
     </div>
   </div>
 </template>
 
 <script>
 import { defineAsyncComponent } from 'vue';
-import { mapState } from 'vuex';
+import { mapState, mapGetters } from 'vuex';
 
 export default {
   components: {
@@ -23,6 +29,16 @@ export default {
   // Sidebar cambia de styles dependiendo el estado del mismo
   computed: {
     ...mapState('journal', ['activeSidebar']),
+    ...mapGetters('journal', ['getEntriesByTerm']),
+    entriesByTerm() {
+      return this.getEntriesByTerm(this.term);
+    },
+  },
+
+  data() {
+    return {
+      term: '',
+    };
   },
 };
 </script>
@@ -33,12 +49,13 @@ export default {
   /* position: absolute; */
   bottom: 0;
   height: calc(100vh - 100px);
-  left: -180%;
+  left: -250%;
   overflow-x: hidden;
   overflow-y: auto;
   padding-top: 1rem;
   top: 69px;
   transition: 700ms;
+  border-right: 1px solid black;
   z-index: 10;
   /* Para que no se trasnparente los demas componentes debajo de este */
   background-color: white;
@@ -47,6 +64,7 @@ export default {
     /* display: none; */
     top: 94px;
     position: absolute;
+    left: -300%;
   }
 }
 
