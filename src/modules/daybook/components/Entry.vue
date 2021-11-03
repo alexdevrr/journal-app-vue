@@ -5,7 +5,7 @@
   >
     <div class="entry-title d-flex gap-2">
       <span class="text-primary fw-bold">{{ day }}</span>
-      <span class="">{{ mouth }}</span>
+      <span class="">{{ month }}</span>
       <span class="fw-bold">{{ yearDay }}</span>
     </div>
 
@@ -18,29 +18,7 @@
 </template>
 
 <script>
-const months = [
-  'Enero',
-  'Febrero',
-  'Marzo',
-  'Abril',
-  'Mayo',
-  'Junio',
-  'Julio',
-  'Agosto',
-  'Septiembre',
-  'Octubre',
-  'Noviembre',
-  'Diciembre',
-];
-const days = [
-  'Domingo',
-  'Lunes',
-  'Martes',
-  'Miércoles',
-  'Jueves',
-  'Viernes',
-  'Sábado',
-];
+import getDayMonthYear from '../helpers/getDayMonthYear';
 
 export default {
   props: {
@@ -58,16 +36,16 @@ export default {
     },
 
     day() {
-      const date = new Date(this.entry.date);
-      return date.getDate();
+      const { day } = getDayMonthYear(this.entry.date);
+      return day;
     },
-    mouth() {
-      const date = new Date(this.entry.date);
-      return months[date.getMonth()];
+    month() {
+      const { month } = getDayMonthYear(this.entry.date);
+      return month;
     },
     yearDay() {
-      const date = new Date(this.entry.date);
-      return ` ${date.getFullYear()}, ${days[date.getDay()]} `;
+      const { yearDay } = getDayMonthYear(this.entry.date);
+      return yearDay;
     },
   },
 };

@@ -11,6 +11,9 @@
     </div>
 
     <div class="entry-scrollarea px-2 pt-2">
+      <div v-if="isLoading">
+        <Loading />
+      </div>
       <Entry v-for="entry in entriesByTerm" :key="entry.id" :entry="entry">
       </Entry>
     </div>
@@ -24,11 +27,12 @@ import { mapState, mapGetters } from 'vuex';
 export default {
   components: {
     Entry: defineAsyncComponent(() => import('./Entry.vue')),
+    Loading: defineAsyncComponent(() => import('../../shared/Loading.vue')),
   },
 
   // Sidebar cambia de styles dependiendo el estado del mismo
   computed: {
-    ...mapState('journal', ['activeSidebar']),
+    ...mapState('journal', ['activeSidebar', 'isLoading']),
     ...mapGetters('journal', ['getEntriesByTerm']),
     entriesByTerm() {
       return this.getEntriesByTerm(this.term);
