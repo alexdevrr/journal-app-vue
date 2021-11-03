@@ -1,38 +1,41 @@
 <template>
-  <div class="mx-2">
-    <div class="d-flex justify-content-between my-4">
-      <!-- date -->
-      <div class="d-flex gap-2">
-        <span class="text-primary fw-bold">{{ day }}</span>
-        <span class="fw-bold">{{ month }}</span>
-        <span class="fw-light">{{ yearDay }}</span>
-      </div>
+  <!-- Agrupador que no modifica el html -->
+  <template v-if="entry">
+    <div class="mx-2">
+      <div class="d-flex justify-content-between my-4">
+        <!-- date -->
+        <div class="d-flex gap-2">
+          <span class="text-primary fw-bold">{{ day }}</span>
+          <span class="fw-bold">{{ month }}</span>
+          <span class="fw-light">{{ yearDay }}</span>
+        </div>
 
-      <!-- buttons -->
-      <div class="d-flex mx-2 ">
-        <button class="btn btn-danger mx-2">
-          <p class="d-none d-md-flex ">Delete</p>
-          <i class="fa fa-trash-alt"></i>
-        </button>
+        <!-- buttons -->
+        <div class="d-flex mx-2 ">
+          <button class="btn btn-danger mx-2">
+            <p class="d-none d-md-flex ">Delete</p>
+            <i class="fa fa-trash-alt"></i>
+          </button>
 
-        <button class="btn btn-info">
-          <p class="d-none d-md-flex ">Upload image</p>
-          <i class="fa fa-upload"></i>
-        </button>
+          <button class="btn btn-info">
+            <p class="d-none d-md-flex ">Upload image</p>
+            <i class="fa fa-upload"></i>
+          </button>
+        </div>
       </div>
     </div>
-  </div>
-  <!-- Fin contenedor -->
 
-  <!-- TextArea -->
-  <div class="d-flex flex-column h-75 mx-2">
-    <hr />
-    <textarea
-      placeholder="What happended today?"
-      class="w-100"
-      v-model="entry.text"
-    ></textarea>
-  </div>
+    <!-- TextArea -->
+    <div class="d-flex flex-column h-75 mx-2">
+      <hr />
+      <textarea
+        placeholder="What happended today?"
+        class="w-100"
+        v-model="entry.text"
+      ></textarea>
+    </div>
+  </template>
+  <!-- Fin contenedor -->
 
   <!-- Image -->
   <img
@@ -90,7 +93,7 @@ export default {
     loadEntry() {
       const entry = this.getEntryById(this.id);
       // Si el id de la entrada no existe
-      if (!entry) this.$router.push({ name: 'no-entry' });
+      if (!entry) return this.$router.push({ name: 'no-entry' });
 
       this.entry = entry;
       console.log(entry);
