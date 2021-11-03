@@ -13,5 +13,7 @@ export const getEntryById = (state) => (id = '') => {
 
   if (!entry) return;
 
+  // Se hace esto para que entry no pase por referencia
+  // Si lo pasamos por referencia se hacen modificaciones no deseadas
   return { ...entry };
 };

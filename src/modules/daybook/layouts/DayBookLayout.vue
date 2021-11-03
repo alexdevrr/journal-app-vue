@@ -14,6 +14,7 @@
 
 <script>
 import { defineAsyncComponent } from '@vue/runtime-core';
+import { mapActions } from 'vuex';
 
 export default {
   components: {
@@ -23,6 +24,15 @@ export default {
     EntryList: defineAsyncComponent(() =>
       import('@/modules/daybook/components/EntryList')
     ),
+  },
+
+  // Cuando sean actions se hace con methods no con computed
+  methods: {
+    ...mapActions('journal', ['loadEntries']),
+  },
+
+  created() {
+    this.loadEntries();
   },
 };
 </script>
