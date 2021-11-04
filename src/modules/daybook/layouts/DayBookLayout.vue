@@ -1,7 +1,11 @@
 <template>
   <Navbar />
 
-  <div class="d-flex">
+  <div v-if="isLoading">
+    <Loading />
+  </div>
+
+  <div class="d-flex" v-else>
     <div class="col-4">
       <EntryList />
     </div>
@@ -14,7 +18,7 @@
 
 <script>
 import { defineAsyncComponent } from '@vue/runtime-core';
-import { mapActions } from 'vuex';
+import { mapActions, mapState } from 'vuex';
 
 export default {
   components: {
@@ -24,6 +28,11 @@ export default {
     EntryList: defineAsyncComponent(() =>
       import('@/modules/daybook/components/EntryList')
     ),
+    Loading: defineAsyncComponent(() => import('../../shared/Loading.vue')),
+  },
+
+  computed: {
+    ...mapState('journal', ['activeSidebar', 'isLoading']),
   },
 
   // Cuando sean actions se hace con methods no con computed

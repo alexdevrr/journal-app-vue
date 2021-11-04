@@ -1,6 +1,7 @@
 <template>
-  <div class="loading-container">
-    <p>Loading...</p>
+  <div class="loading-container ">
+    Loading...
+    <i class="fa fa-spin fa-sync"></i>
   </div>
 </template>
 
@@ -10,7 +11,7 @@ export default {};
 
 <style lang="scss" scoped>
 .loading-container {
-  height: 100vh;
+  height: 90vh;
   display: flex;
   align-items: center;
   justify-content: center;

@@ -14,6 +14,15 @@ export const loadEntries = async ({ commit }) => {
   commit('setEntries', entries);
 };
 
-export const updateEntry = async (/*{ commit } */) => {};
+// El parámetro se recibe así
+export const updateEntry = async ({ commit }, entry) => {
+  const { date, text, picture } = entry;
+  const dataToSave = { date, text, picture };
+
+  await journalApi.put(`/entries/${entry.id}.json`, dataToSave);
+
+  // se desesctructura para eviar que js lo pase por referencia (solo por precaución)
+  commit('updateEntry', { ...entry });
+};
 
 export const createEntry = async (/*{ commit } */) => {};

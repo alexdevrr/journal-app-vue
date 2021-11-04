@@ -1,5 +1,6 @@
 <template>
-  <button class="btn btn-dark">
+  <!-- event emit from EntryView -->
+  <button class="btn btn-dark" @click="$emit('on:click')">
     <i class="fa fa-2x" :class="icon"></i>
   </button>
 </template>
